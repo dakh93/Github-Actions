@@ -11,3 +11,17 @@ jobs:
           run: |
             node -v
             npm -v
+
+  parallel-jobs-windows:
+    runs-on: windows-latest
+    steps:
+      - name: View Software Version
+        run: winver
+  dependant-job:
+    runs-on: windows-latest
+    needs: run-shell-commands
+    steps: 
+      - name: echo a string
+        run: Write-Output "Windows String"
+      - name: Error Step
+        run: doesnotexists
